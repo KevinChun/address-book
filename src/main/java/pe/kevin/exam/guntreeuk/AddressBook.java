@@ -1,3 +1,6 @@
+package pe.kevin.exam.guntreeuk;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,10 +13,11 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class AddressBook {
     private String name;
 
-    private Genter gender;
+    private Gender gender;
 
     private LocalDate birthDate;
 }
