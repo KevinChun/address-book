@@ -1,10 +1,10 @@
 package pe.kevin.exam.guntreeuk;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +17,9 @@ public class AddressBookService {
 
     private String dataFilePath = "addressBook-data.txt";
 
+    @Autowired
+    private AddressBookDataLoader addressBookDataLoader;
+
     public long getNumberByGender(Gender gender) {
 
         List<AddressBook> data = getAddressBooks();
@@ -24,7 +27,7 @@ public class AddressBookService {
     }
 
     private List<AddressBook> getAddressBooks() {
-        return new AddressBookDataLoader().load(dataFilePath);
+        return addressBookDataLoader.load(dataFilePath);
     }
 
     public AddressBook getOldestAddressBook() {

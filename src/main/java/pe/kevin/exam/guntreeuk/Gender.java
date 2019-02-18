@@ -7,8 +7,4 @@ package pe.kevin.exam.guntreeuk;
 public enum Gender {
     Male,
     Female;
-
-    public Gender findByVal(String val){
-        return Gender.valueOf(val);
-    }
 }
