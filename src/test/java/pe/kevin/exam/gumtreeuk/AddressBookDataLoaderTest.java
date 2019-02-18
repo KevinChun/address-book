@@ -1,5 +1,13 @@
+package pe.kevin.exam.gumtreeuk;
+
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 import pe.kevin.exam.guntreeuk.AddressBook;
+import pe.kevin.exam.guntreeuk.AddressBookApplication;
 import pe.kevin.exam.guntreeuk.AddressBookDataLoader;
 import pe.kevin.exam.guntreeuk.Gender;
 
@@ -13,12 +21,18 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
  * Created by Kevin Chun (kechun@ebay.com)
  * Date: 2019-02-19
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = AddressBookApplication.class)
+@ContextConfiguration
 public class AddressBookDataLoaderTest {
+
+    @Autowired
+    private AddressBookDataLoader addressBookDataLoader;
 
     @Test
     public void test_load_data_successfully() {
         String givenPath = "addressBook-data.txt";
-        List<AddressBook> data = new AddressBookDataLoader().load(givenPath);
+        List<AddressBook> data = addressBookDataLoader.load(givenPath);
 
         assertThat(data).isNotNull();
         assertThat(data.size()).isEqualTo(5);

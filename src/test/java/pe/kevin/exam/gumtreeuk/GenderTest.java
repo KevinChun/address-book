@@ -1,3 +1,5 @@
+package pe.kevin.exam.gumtreeuk;
+
 import org.junit.Test;
 import pe.kevin.exam.guntreeuk.Gender;
 
